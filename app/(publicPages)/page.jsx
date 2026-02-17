@@ -3,7 +3,6 @@ import SectionTitle from "@/components/SectionTitle";
 import { companiesLogo } from "@/data/companiesLogo";
 import { featuresData } from "@/data/featuresData";
 import { FaqSection } from "@/sections/FaqSection";
-import Pricing from "@/sections/Pricing";
 import { VideoIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -75,13 +74,13 @@ export default function Page() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="flex items-center gap-2 mt-6 pt-5 border-t border-slate-200">
-                            <span className="text-sm font-medium text-slate-500 group-hover:text-slate-900 transition-colors duration-300">Descoperă</span>
-                            <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-slate-200 transition-colors duration-300">
-                                <svg className="w-3 h-3 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <div className="mt-6 pt-5 border-t border-slate-200">
+                            <span className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-black text-white text-sm font-medium group-hover:bg-gray-800 transition-colors duration-300">
+                                Descoperă serviciul
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
-                            </div>
+                            </span>
                         </div>
                     </div>
                 </Link>
@@ -116,13 +115,13 @@ export default function Page() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="flex items-center gap-2 mt-6 pt-5 border-t border-slate-200">
-                            <span className="text-sm font-medium text-slate-500 group-hover:text-slate-900 transition-colors duration-300">Descoperă</span>
-                            <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-slate-200 transition-colors duration-300">
-                                <svg className="w-3 h-3 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <div className="mt-6 pt-5 border-t border-slate-200">
+                            <span className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-black text-white text-sm font-medium group-hover:bg-gray-800 transition-colors duration-300">
+                                Descoperă serviciul
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
-                            </div>
+                            </span>
                         </div>
                     </div>
                 </Link>
@@ -157,19 +156,34 @@ export default function Page() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="flex items-center gap-2 mt-6 pt-5 border-t border-slate-200">
-                            <span className="text-sm font-medium text-slate-500 group-hover:text-slate-900 transition-colors duration-300">Descoperă</span>
-                            <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-slate-200 transition-colors duration-300">
-                                <svg className="w-3 h-3 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <div className="mt-6 pt-5 border-t border-slate-200">
+                            <span className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-black text-white text-sm font-medium group-hover:bg-gray-800 transition-colors duration-300">
+                                Descoperă serviciul
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
-                            </div>
+                            </span>
                         </div>
                     </div>
                 </Link>
             </div>
 
-            <Pricing />
+            <div id="pachete" className="flex flex-col items-center text-center justify-center mt-28 px-6">
+                <SectionTitle text1="PREȚURI" text2="Prețuri personalizate" text3="Fiecare afacere este unică, iar prețurile noastre reflectă asta. Contactează-ne pentru o ofertă adaptată nevoilor tale." />
+                <div className="mt-10 max-w-2xl">
+                    <p className="text-lg text-slate-600 leading-relaxed">
+                        Nu credem în pachete generice. Analizăm nevoile afacerii tale și construim o soluție personalizată cu un preț corect, transparent și adaptat bugetului tău.
+                    </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+                        <Link href="/contact" className="bg-black hover:bg-gray-800 transition text-white rounded-md px-8 py-3 font-medium">
+                            Solicită o ofertă personalizată
+                        </Link>
+                        <Link href="/#servicii" className="border border-black hover:bg-slate-100 transition text-slate-800 rounded-md px-8 py-3 font-medium">
+                            Vezi serviciile noastre
+                        </Link>
+                    </div>
+                </div>
+            </div>
 
             <FaqSection />
 

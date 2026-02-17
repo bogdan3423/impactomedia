@@ -52,71 +52,98 @@ export default function Navbar() {
     };
 
     return (
-        <nav className={`flex items-center justify-between fixed z-50 top-0 w-full px-6 md:px-16 lg:px-24 xl:px-32 py-4 transition-colors duration-300 ${openMobileMenu ? '' : scrolled ? 'bg-white/95' : 'bg-transparent'}`}>
-            <Link href="/" className="flex items-center">
-                <Image 
-                    src="/assets/logo-dark.svg" 
-                    alt="Impacto Media Logo" 
-                    width={220} 
-                    height={40} 
-                    className="h-10 md:h-11 w-auto"
-                    priority 
-                />
-            </Link>
-            <div className="hidden items-center md:gap-8 lg:gap-9 md:flex lg:pl-20">
-                {navLinks.map((link) => (
+        <>
+            <nav className={`flex items-center justify-between fixed z-50 top-0 w-full px-6 md:px-16 lg:px-24 xl:px-32 py-4 transition-colors duration-300 ${openMobileMenu ? 'bg-transparent' : scrolled ? 'bg-white/95' : 'bg-transparent'}`}>
+                <Link href="/" className="flex items-center relative z-[60]">
+                    <Image 
+                        src="/assets/logo-dark.svg" 
+                        alt="Impacto Media Logo" 
+                        width={220} 
+                        height={40} 
+                        className="h-10 md:h-11 w-auto"
+                        priority 
+                    />
+                </Link>
+                <div className="hidden items-center md:gap-8 lg:gap-9 md:flex lg:pl-20">
+                    {navLinks.map((link) => (
+                        <a 
+                            key={link.name} 
+                            href={link.href} 
+                            onClick={(e) => handleNavClick(e, link.href)}
+                            className="hover:text-slate-600 cursor-pointer"
+                        >
+                            {link.name}
+                        </a>
+                    ))}
+                </div>
+                <div className="flex items-center gap-4">
                     <a 
-                        key={link.name} 
-                        href={link.href} 
-                        onClick={(e) => handleNavClick(e, link.href)}
-                        className="hover:text-slate-600 cursor-pointer"
+                        href="/contact" 
+                        onClick={(e) => handleNavClick(e, '/contact')}
+                        className="hidden md:block hover:bg-slate-100 transition px-4 py-2 border border-black rounded-md cursor-pointer"
                     >
-                        {link.name}
+                        Contact
                     </a>
-                ))}
-            </div>
-            {/* Mobile menu */}
-            <div className={`fixed inset-0 flex flex-col items-center justify-center gap-6 text-lg font-medium bg-white/60 backdrop-blur-md md:hidden transition duration-300 ${openMobileMenu ? "translate-x-0" : "-translate-x-full"}`}>
-                {navLinks.map((link) => (
                     <a 
-                        key={link.name} 
-                        href={link.href} 
-                        onClick={(e) => handleNavClick(e, link.href)}
-                        className="cursor-pointer"
+                        href="/contact" 
+                        onClick={(e) => handleNavClick(e, '/contact')}
+                        className="hidden md:block px-4 py-2 bg-black hover:bg-gray-800 transition text-white rounded-md cursor-pointer"
                     >
-                        {link.name}
+                        Solicită un audit gratuit
                     </a>
-                ))}
-                <a 
-                    href="/contact" 
-                    onClick={(e) => handleNavClick(e, '/contact')} 
-                    className="hover:text-slate-600 cursor-pointer"
+                    <button 
+                        onClick={() => setOpenMobileMenu(!openMobileMenu)} 
+                        className="md:hidden relative z-[60]"
+                        aria-label={openMobileMenu ? "Close menu" : "Open menu"}
+                    >
+                        {openMobileMenu ? (
+                            <XIcon size={26} className="active:scale-90 transition" />
+                        ) : (
+                            <MenuIcon size={26} className="active:scale-90 transition" />
+                        )}
+                    </button>
+                </div>
+            </nav>
+            
+            {/* Mobile menu overlay */}
+            <div 
+                className={`fixed inset-0 bg-white/95 backdrop-blur-md md:hidden z-40 transition-all duration-300 ${
+                    openMobileMenu 
+                        ? "opacity-100 pointer-events-auto" 
+                        : "opacity-0 pointer-events-none"
+                }`}
+                onClick={() => setOpenMobileMenu(false)}
+            >
+                <div 
+                    className="flex flex-col items-center justify-center h-full gap-8 px-6"
+                    onClick={(e) => e.stopPropagation()}
                 >
-                    Conectare
-                </a>
-                <button className="aspect-square size-10 p-1 items-center justify-center bg-black hover:bg-gray-800 transition text-white rounded-md flex" onClick={() => setOpenMobileMenu(false)}>
-                    <XIcon />
-                </button>
+                    {navLinks.map((link) => (
+                        <a 
+                            key={link.name} 
+                            href={link.href} 
+                            onClick={(e) => handleNavClick(e, link.href)}
+                            className="text-xl font-medium hover:text-slate-600 transition cursor-pointer active:scale-95 py-2"
+                        >
+                            {link.name}
+                        </a>
+                    ))}
+                    <a 
+                        href="/contact" 
+                        onClick={(e) => handleNavClick(e, '/contact')} 
+                        className="text-xl font-medium hover:text-slate-600 transition cursor-pointer active:scale-95 py-2"
+                    >
+                        Contact
+                    </a>
+                    <a 
+                        href="/contact" 
+                        onClick={(e) => handleNavClick(e, '/contact')} 
+                        className="px-6 py-3 bg-black hover:bg-gray-800 transition text-white rounded-md cursor-pointer active:scale-95 mt-4"
+                    >
+                        Solicită un audit gratuit
+                    </a>
+                </div>
             </div>
-            <div className="flex items-center gap-4">
-                <a 
-                    href="/contact" 
-                    onClick={(e) => handleNavClick(e, '/contact')}
-                    className="hidden md:block hover:bg-slate-100 transition px-4 py-2 border border-black rounded-md cursor-pointer"
-                >
-                    Contact
-                </a>
-                <a 
-                    href="/contact" 
-                    onClick={(e) => handleNavClick(e, '/contact')}
-                    className="hidden md:block px-4 py-2 bg-black hover:bg-gray-800 transition text-white rounded-md cursor-pointer"
-                >
-                    Solicită un audit gratuit
-                </a>
-                <button onClick={() => setOpenMobileMenu(!openMobileMenu)} className="md:hidden">
-                    <MenuIcon size={26} className="active:scale-90 transition" />
-                </button>
-            </div>
-        </nav>
+        </>
     );
 }
