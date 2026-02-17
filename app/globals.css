@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+    --font-poppins: "Poppins", sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+    @apply bg-white text-slate-800 dark:bg-gray-950 dark:text-white text-sm font-poppins antialiased;
+}
+
+button {
+    @apply cursor-pointer;
+}
+
+/* Performance: promote fixed navbar to its own compositing layer */
+nav[class*="fixed"] {
+    will-change: transform;
+}
+
+/* Performance: contain layout paint for heavy sections */
+section,
+[id="servicii"],
+[id="pachete"],
+[id="contact"] {
+    contain: layout style;
+}
