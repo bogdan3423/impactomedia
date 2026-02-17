@@ -138,13 +138,13 @@ export default function Page() {
                     Creăm website-uri profesionale și magazine online care transformă vizitatorii în clienți fideli. Design modern, performanță optimă, rezultate măsurabile.
                 </p>
                 <div className="flex items-center gap-4 mt-8">
-                    <button className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11">
+                    <Link href="/contact" className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11 flex items-center">
                         Solicită o ofertă
-                    </button>
-                    <button className="flex items-center gap-2 border border-black transition text-slate-600 rounded-md px-6 h-11">
+                    </Link>
+                    <Link href="#portofoliu" className="flex items-center gap-2 border border-black transition text-slate-600 rounded-md px-6 h-11">
                         <VideoIcon strokeWidth={1} />
                         <span>Vezi exemple</span>
-                    </button>
+                    </Link>
                 </div>
             </div>
 
@@ -182,7 +182,7 @@ export default function Page() {
             
 
             {/* Portfolio Section */}
-            <div className="px-6 md:px-16 lg:px-24 xl:px-32 py-20">
+            <div id="portofoliu" className="px-6 md:px-16 lg:px-24 xl:px-32 py-20">
                 <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max mx-auto">PORTOFOLIU</p>
                 <h3 className="text-3xl font-semibold text-center mx-auto mt-4">Proiecte care vorbesc de la sine</h3>
                 <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">Iată câteva dintre proiectele pe care le-am realizat pentru clienții noștri.</p>
@@ -260,9 +260,9 @@ export default function Page() {
                     Hai să discutăm despre proiectul tău și să găsim cea mai bună soluție pentru afacerea ta.
                 </p>
                 <div className="flex items-center gap-4 mt-8">
-                    <button className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11">
+                    <Link href="/contact" className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11 flex items-center">
                         Programează o consultare gratuită
-                    </button>
+                    </Link>
                     <Link href="/#servicii" className="border border-black transition text-slate-600 rounded-md px-6 h-11 flex items-center">
                         Vezi toate serviciile
                     </Link>
