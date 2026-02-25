@@ -3,6 +3,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { companiesLogo } from "@/data/companiesLogo";
 import { featuresData } from "@/data/featuresData";
 import { FaqSection } from "@/sections/FaqSection";
+import PortfolioShowcase from "@/sections/PortfolioShowcase";
 import { VideoIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -167,6 +168,8 @@ export default function Page() {
                     </div>
                 </Link>
             </div>
+
+            <PortfolioShowcase />
 
             <div id="pachete" className="flex flex-col items-center text-center justify-center mt-28 px-6">
                 <SectionTitle text1="PREȚURI" text2="Prețuri personalizate" text3="Fiecare afacere este unică, iar prețurile noastre reflectă asta. Contactează-ne pentru o ofertă adaptată nevoilor tale." />

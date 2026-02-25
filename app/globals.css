@@ -26,3 +26,12 @@ section,
 [id="contact"] {
     contain: layout style;
 }
+
+/* Hide scrollbar for portfolio horizontal scroll */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
