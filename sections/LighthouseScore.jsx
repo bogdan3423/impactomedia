@@ -14,7 +14,7 @@ export default function LighthouseScore() {
 
                 <div className="mt-8 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
                     <Image
-                        src="/assets/agentie_de_marketing_lighthousetest.png"
+                        src="/assets/agentie_de_marketing_lighthousetestok.png"
                         alt="Google Lighthouse Test - 100 Performance, 93 Accessibility, 96 Best Practices, 100 SEO"
                         width={800}
                         height={450}
