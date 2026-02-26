@@ -15,9 +15,9 @@ export const FaqSection = () => {
                 {faqsData.map((faq, index) => (
                     <div className="border-b border-slate-300 py-4 cursor-pointer w-full" key={index} onClick={() => setOpenIndex(openIndex === index ? null : index)}>
                         <div className="flex items-center justify-between">
-                            <h3 className="text-base font-medium">
+                            <h4 className="text-base font-medium">
                                 {faq.question}
-                            </h3>
+                            </h4>
                             <ChevronDown size={18} className={`${openIndex === index && "rotate-180"} transition-transform duration-500 ease-in-out`} />
                         </div>
                         <p className={`text-sm text-slate-600 transition-[opacity,max-height,transform,padding] duration-500 ease-in-out max-w-xl ${openIndex === index ? "opacity-100 max-h-[500px] translate-y-0 pt-4" : "opacity-0 max-h-0 overflow-hidden -translate-y-2"}`} >

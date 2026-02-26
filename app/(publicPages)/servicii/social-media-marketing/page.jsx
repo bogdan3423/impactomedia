@@ -1,224 +1,45 @@
-"use client"
-import { CheckIcon, ChevronDown, VideoIcon, CameraIcon, UsersIcon, CalendarIcon, TrendingUpIcon, SparklesIcon, MegaphoneIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import SocialMediaPageClient from "./SocialMediaPageClient";
 
-const videoPortfolio = [
-    {
-        company: "Numele Companiei",
-        category: "Restaurant & HoReCa",
-        description: "Campanie video pentru promovarea meniului sezonier și a ambianței restaurantului.",
-        image: "/assets/placeholder-video-1.png",
-        platform: "Instagram & TikTok",
-        results: "150K+ vizualizări",
+export const metadata = {
+    title: "Social Media Marketing & Content Creation",
+    description: "Servicii de social media marketing și creare conținut video în Cluj-Napoca. Filmare profesională, actori, editare și management complet pentru Instagram, TikTok și Facebook.",
+    alternates: {
+        canonical: "https://impactomedia.ro/servicii/social-media-marketing",
     },
-    {
-        company: "Numele Companiei",
-        category: "Salon Beauty",
-        description: "Serie de reels pentru promovarea serviciilor de coafură și tratamente faciale.",
-        image: "/assets/placeholder-video-2.png",
-        platform: "Instagram Reels",
-        results: "80K+ vizualizări",
+    openGraph: {
+        title: "Social Media Marketing & Content Creation | Impacto Media",
+        description: "Servicii de social media marketing și creare conținut video în Cluj-Napoca. Filmare profesională, actori, editare și management complet.",
+        url: "https://impactomedia.ro/servicii/social-media-marketing",
     },
-    {
-        company: "Numele Companiei",
-        category: "Fitness & Wellness",
-        description: "Conținut motivațional și prezentarea programelor de antrenament personalizat.",
-        image: "/assets/placeholder-video-3.png",
-        platform: "TikTok & YouTube",
-        results: "200K+ vizualizări",
-    },
-    {
-        company: "Numele Companiei",
-        category: "E-commerce",
-        description: "Video-uri de prezentare produse și unboxing pentru magazin online de fashion.",
-        image: "/assets/placeholder-video-4.png",
-        platform: "Instagram & Facebook",
-        results: "120K+ vizualizări",
-    },
-    {
-        company: "Numele Companiei",
-        category: "Clinică Medicală",
-        description: "Conținut educațional și de încredere pentru atragerea pacienților noi.",
-        image: "/assets/placeholder-video-5.png",
-        platform: "Facebook & YouTube",
-        results: "95K+ vizualizări",
-    },
-    {
-        company: "Numele Companiei",
-        category: "Real Estate",
-        description: "Tururi virtuale și prezentări de proprietăți pentru agenție imobiliară.",
-        image: "/assets/placeholder-video-6.png",
-        platform: "Instagram & TikTok",
-        results: "180K+ vizualizări",
-    },
-];
+};
 
-const features = [
-    { icon: CameraIcon, title: "Filmare Profesională", description: "Venim la locația ta cu echipament complet — cameră, lumini, microfoane și tot ce e nevoie." },
-    { icon: UsersIcon, title: "Actori & Modele", description: "Echipa noastră include actori profesioniști care dau viață scenariilor create pentru brandul tău." },
-    { icon: SparklesIcon, title: "Editare & Post-Producție", description: "Editare video dinamică, efecte vizuale, subtitrări și muzică — totul pentru un conținut de impact." },
-    { icon: CalendarIcon, title: "Calendar de Conținut", description: "Planificăm și programăm conținutul pe săptămâni sau luni întregi, pentru consistență." },
-    { icon: TrendingUpIcon, title: "Strategie de Creștere", description: "Analizăm audiența ta și creăm strategii care aduc engagement real și followers calificați." },
-    { icon: MegaphoneIcon, title: "Management Complet", description: "Ne ocupăm de postare, interacțiuni cu audiența și raportare lunară a rezultatelor." },
-];
-
-const processSteps = [
-    { step: "01", title: "Briefing & Strategie", description: "Înțelegem brandul tău, audiența și obiectivele pentru a crea o strategie de conținut personalizată." },
-    { step: "02", title: "Scenarii & Planificare", description: "Scriem scenariile, planificăm zilele de filmare și pregătim tot ce e necesar." },
-    { step: "03", title: "Filmare la Locație", description: "Echipa completă vine la tine — cameramani, actori, echipament — și filmăm tot conținutul." },
-    { step: "04", title: "Editare & Publicare", description: "Edităm profesional, adăugăm efecte și subtitrări, apoi postăm conform calendarului stabilit." },
-];
-
-const faqs = [
-    { question: "Câte video-uri primesc pe lună?", answer: "Depinde de pachetul ales — de la 8 reels/lună pentru pachetul de bază, până la 20+ video-uri pentru pachetele premium. Fiecare video este filmat profesional cu actori și echipament complet." },
-    { question: "Veniți voi la filmare sau trebuie să vin eu?", answer: "Venim noi la locația ta cu tot echipamentul — cameră, lumini, microfoane, trepied. Tu trebuie doar să fii prezent dacă dorești, dar avem și actori care pot prezenta în locul tău." },
-    { question: "Pe ce platforme publicați conținutul?", answer: "Acoperim Instagram (Feed, Reels, Stories), TikTok, Facebook, YouTube Shorts și LinkedIn — în funcție de unde se află audiența ta." },
-    { question: "Cât durează până văd primele rezultate?", answer: "Primele rezultate vizibile (creștere engagement, followers, reach) apar de obicei în primele 30-60 de zile. Rezultatele consistente se construiesc în 3-6 luni." },
-    { question: "Pot aproba conținutul înainte de postare?", answer: "Absolut! Toate materialele trec prin procesul tău de aprobare înainte de a fi publicate. Primești acces la un calendar partajat unde poți vedea și aproba fiecare postare." },
-];
+function ServiceJsonLd() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Social Media Marketing & Content Creation",
+        "description": "Servicii de social media marketing și creare conținut video profesional. Filmare la locație, actori, editare și management complet.",
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "Impacto Media",
+            "url": "https://impactomedia.ro",
+        },
+        "areaServed": { "@type": "Country", "name": "Romania" },
+        "serviceType": "Social Media Marketing",
+    };
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+    );
+}
 
 export default function Page() {
-    const [openFaq, setOpenFaq] = useState(null);
-
     return (
         <>
-            {/* Hero Section */}
-            <div className="flex flex-col items-center justify-center text-center px-4 pb-20 bg-[url('/assets/light-hero-gradient.svg')] bg-no-repeat bg-cover">
-                <h1 className="mt-46 text-6xl/16 md:text-[80px]/22 font-semibold max-w-4xl">
-                    Social Media Marketing &{" "}
-                    <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">Content Creation</span>
-                </h1>
-                <p className="text-lg max-w-xl mt-4">
-                    Venim la tine cu echipa completă — actori, echipament profesional și experiență. Creăm conținut video care atrage, convinge și vinde.
-                </p>
-                <div className="flex items-center gap-4 mt-8">
-                    <button className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11">
-                        Solicită o ofertă
-                    </button>
-                    <button className="flex items-center gap-2 border border-black transition text-slate-600 rounded-md px-6 h-11">
-                        <VideoIcon strokeWidth={1} />
-                        <span>Vezi portofoliul</span>
-                    </button>
-                </div>
-            </div>
-
-            {/* Video Portfolio Section */}
-            <div className="px-6 md:px-16 lg:px-24 xl:px-32 py-20">
-                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    {/* Left - Info */}
-                    <div>
-                        <p className="font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max">PORTOFOLIU VIDEO</p>
-                        <h3 className="text-3xl font-semibold mt-4"> Exemple de conținut creat de noi</h3>
-                        <p className="text-slate-600 mt-4 leading-relaxed">
-                            Iată doar un exemplu din conținutul video pe care îl creăm pentru clienții noștri. De la scenarii și filmare, până la editare și publicare — fiecare video este gândit strategic pentru a genera vizualizări, engagement și conversii.
-                        </p>
-                        
-                        <div className="flex flex-wrap gap-3 mt-6">
-                            {["Instagram Reels", "TikTok", "YouTube Shorts", "Facebook"].map((tag) => (
-                                <span key={tag} className="text-sm px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-700">
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                        
-                    </div>
-
-                    {/* Right - Phone Videos */}
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-6">
-                        <div className="relative w-[75%] sm:w-[240px] lg:w-[260px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border-[6px] sm:border-[8px] border-slate-900 shadow-2xl aspect-[9/16] bg-black">
-                            <video
-                                src="/assets/videomarketin1ok.mp4"
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                        </div>
-                        <div className="relative w-[75%] sm:w-[240px] lg:w-[260px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border-[6px] sm:border-[8px] border-slate-900 shadow-2xl aspect-[9/16] bg-black">
-                            <video
-                                src="/assets/videomarketing2ok.mp4"
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Description Section */}
-            <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-                <p className="text-lg text-slate-600 leading-relaxed">
-                    Social media nu e doar despre postări — e despre povești care conectează. Echipa noastră vine direct la locația ta, echipată complet, cu actori și scenarii personalizate, pentru a crea conținut video autentic care îți diferențiază brandul în feed-ul aglomerat al competiției.
-                </p>
-            </div>
-
-            {/* Features Grid */}
-            <div className="px-6 md:px-16 lg:px-24 xl:px-32 pb-20">
-                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max mx-auto">CE OFERIM</p>
-                <h3 className="text-3xl font-semibold text-center mx-auto mt-4">Tot ce ai nevoie pentru social media</h3>
-                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">De la filmare și editare la strategie și management — acoperim fiecare aspect.</p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-                    {features.map((feature, index) => (
-                        <div key={index} className="group relative min-h-[220px] rounded-3xl overflow-hidden cursor-default">
-                            <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50 to-white"></div>
-                            <div className="absolute inset-0 rounded-3xl border border-slate-200 group-hover:border-slate-300 transition-colors duration-300"></div>
-                            <div className="relative z-10 h-full flex flex-col p-7">
-                                <div className="w-14 h-14 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center mb-5 group-hover:bg-slate-200 transition-colors duration-300">
-                                    <feature.icon className="text-slate-900 size-7" strokeWidth={1.2} />
-                                </div>
-                                <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
-                                <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Process Section */}
-            <div className="px-6 md:px-16 lg:px-24 xl:px-32 py-20 bg-slate-50">
-                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-white border border-slate-300 w-max mx-auto">PROCESUL NOSTRU</p>
-                <h3 className="text-3xl font-semibold text-center mx-auto mt-4">De la idee la viral</h3>
-                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">Un proces simplu și transparent care îți aduce conținut de calitate.</p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 max-w-6xl mx-auto">
-                    {processSteps.map((item, index) => (
-                        <div key={index} className="relative bg-white rounded-2xl border border-slate-200 p-6 hover:border-slate-300 hover:shadow-sm transition-[border-color,box-shadow] duration-300">
-                            <span className="text-4xl font-bold text-slate-100">{item.step}</span>
-                            <h3 className="text-lg font-semibold text-slate-900 mt-3 mb-2">{item.title}</h3>
-                            <p className="text-slate-600 text-sm leading-relaxed">{item.description}</p>
-                            {index < processSteps.length - 1 && (
-                                <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-[2px] bg-slate-200"></div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Benefits Section */}
-            
-
-            {/* Final CTA */}
-            <div className="flex flex-col items-center text-center justify-center py-20 px-6">
-                <h3 className="text-3xl font-semibold mb-4">Gata să ieși în evidență pe social media?</h3>
-                <p className="text-slate-600 max-w-xl mx-auto">
-                    Programează o întâlnire și hai să discutăm cum putem transforma prezența ta online.
-                </p>
-                <div className="flex items-center gap-4 mt-8">
-                    <button className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11">
-                        Programează o consultare gratuită
-                    </button>
-                    <Link href="/#servicii" className="border border-black transition text-slate-600 rounded-md px-6 h-11 flex items-center">
-                        Vezi toate serviciile
-                    </Link>
-                </div>
-            </div>
+            <ServiceJsonLd />
+            <SocialMediaPageClient />
         </>
     );
 }

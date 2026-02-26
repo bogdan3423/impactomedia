@@ -3,6 +3,7 @@ import { websitePortfolio, videoPortfolio } from "@/data/portfolioData";
 import { ArrowRightIcon, GlobeIcon, VideoIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import LighthouseScore from "@/sections/LighthouseScore";
 
 
 function WebsiteCard({ item }) {
@@ -54,9 +55,9 @@ export default function PortfolioShowcase() {
                 <p className="font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max mx-auto">
                     PORTOFOLIU
                 </p>
-                <h3 className="text-3xl md:text-4xl font-semibold text-center mx-auto mt-4">
+                <h2 className="text-3xl md:text-4xl font-semibold text-center mx-auto mt-4">
                     Proiecte care vorbesc de la sine
-                </h3>
+                </h2>
                 <p className="text-slate-600 text-center mt-2 max-w-xl mx-auto">
                     De la website-uri profesionale la conținut video de impact — iată o parte din munca noastră recentă.
                 </p>
@@ -69,7 +70,7 @@ export default function PortfolioShowcase() {
                         <GlobeIcon className="w-5 h-5 text-slate-700" />
                     </div>
                     <div>
-                        <h4 className="font-semibold text-lg text-slate-900">Website-uri Create</h4>
+                        <h3 className="font-semibold text-lg text-slate-900">Website-uri Create</h3>
                         <p className="text-slate-500 text-sm">Design modern, performanță optimă</p>
                     </div>
                 </div>
@@ -92,6 +93,8 @@ export default function PortfolioShowcase() {
                 </div>
             </div>
 
+            <LighthouseScore />
+
             {/* Video Content Portfolio — split layout like the marketing page */}
             <div className="mt-20 px-6 md:px-16 lg:px-24 xl:px-32">
                 <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -102,7 +105,7 @@ export default function PortfolioShowcase() {
                                 <VideoIcon className="w-5 h-5 text-slate-700" />
                             </div>
                             <div>
-                                <h4 className="font-semibold text-lg text-slate-900">Conținut Video Social Media</h4>
+                                <h3 className="font-semibold text-lg text-slate-900">Conținut Video Social Media</h3>
                                 <p className="text-slate-500 text-sm">Filmare profesională la locația ta</p>
                             </div>
                         </div>
