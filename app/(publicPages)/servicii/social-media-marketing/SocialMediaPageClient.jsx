@@ -3,6 +3,7 @@ import { CheckIcon, ChevronDown, VideoIcon, CameraIcon, UsersIcon, CalendarIcon,
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const videoPortfolio = [
     {
@@ -55,21 +56,9 @@ const videoPortfolio = [
     },
 ];
 
-const features = [
-    { icon: CameraIcon, title: "Filmare Profesională", description: "Venim la locația ta cu echipament complet — cameră, lumini, microfoane și tot ce e nevoie." },
-    { icon: UsersIcon, title: "Actori & Modele", description: "Echipa noastră include actori profesioniști care dau viață scenariilor create pentru brandul tău." },
-    { icon: SparklesIcon, title: "Editare & Post-Producție", description: "Editare video dinamică, efecte vizuale, subtitrări și muzică — totul pentru un conținut de impact." },
-    { icon: CalendarIcon, title: "Calendar de Conținut", description: "Planificăm și programăm conținutul pe săptămâni sau luni întregi, pentru consistență." },
-    { icon: TrendingUpIcon, title: "Strategie de Creștere", description: "Analizăm audiența ta și creăm strategii care aduc engagement real și followers calificați." },
-    { icon: MegaphoneIcon, title: "Management Complet", description: "Ne ocupăm de postare, interacțiuni cu audiența și raportare lunară a rezultatelor." },
-];
+const featureIcons = [CameraIcon, UsersIcon, SparklesIcon, CalendarIcon, TrendingUpIcon, MegaphoneIcon];
 
-const processSteps = [
-    { step: "01", title: "Briefing & Strategie", description: "Înțelegem brandul tău, audiența și obiectivele pentru a crea o strategie de conținut personalizată." },
-    { step: "02", title: "Scenarii & Planificare", description: "Scriem scenariile, planificăm zilele de filmare și pregătim tot ce e necesar." },
-    { step: "03", title: "Filmare la Locație", description: "Echipa completă vine la tine — cameramani, actori, echipament — și filmăm tot conținutul." },
-    { step: "04", title: "Editare & Publicare", description: "Edităm profesional, adăugăm efecte și subtitrări, apoi postăm conform calendarului stabilit." },
-];
+
 
 const faqs = [
     { question: "Câte video-uri primesc pe lună?", answer: "Depinde de pachetul ales — de la 8 reels/lună pentru pachetul de bază, până la 20+ video-uri pentru pachetele premium. Fiecare video este filmat profesional cu actori și echipament complet." },
@@ -81,25 +70,32 @@ const faqs = [
 
 export default function SocialMediaPageClient() {
     const [openFaq, setOpenFaq] = useState(null);
+    const { t } = useLanguage();
+
+    const features = t("socialPage.features").map((feature, index) => ({
+        ...feature,
+        icon: featureIcons[index],
+    }));
+    const processSteps = t("socialPage.processSteps");
 
     return (
         <>
             {/* Hero Section */}
             <div className="flex flex-col items-center justify-center text-center px-4 pb-20 bg-[url('/assets/light-hero-gradient.svg')] bg-no-repeat bg-cover">
                 <h1 className="mt-46 text-6xl/16 md:text-[80px]/22 font-semibold max-w-4xl">
-                    Social Media Marketing &{" "}
-                    <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">Content Creation</span>
+                    {t("socialPage.heroTitle1")}{" "}
+                    <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">{t("socialPage.heroTitle2")}</span>
                 </h1>
                 <p className="text-lg max-w-xl mt-4">
-                    Venim la tine cu echipa completă — actori, echipament profesional și experiență. Creăm conținut video care atrage, convinge și vinde.
+                    {t("socialPage.heroDescription")}
                 </p>
                 <div className="flex items-center gap-4 mt-8">
                     <Link href="/contact" className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11 flex items-center">
-                        Solicită o ofertă
+                        {t("socialPage.requestOffer")}
                     </Link>
                     <Link href="#portofoliu-video" className="flex items-center gap-2 border border-black transition text-slate-600 rounded-md px-6 h-11">
                         <VideoIcon strokeWidth={1} />
-                        <span>Vezi portofoliul</span>
+                        <span>{t("socialPage.seePortfolio")}</span>
                     </Link>
                 </div>
             </div>
@@ -109,10 +105,10 @@ export default function SocialMediaPageClient() {
                 <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Left - Info */}
                     <div>
-                        <p className="font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max">PORTOFOLIU VIDEO</p>
-                        <h2 className="text-3xl font-semibold mt-4"> Exemple de conținut creat de noi</h2>
+                        <p className="font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max">{t("socialPage.portfolioLabel")}</p>
+                        <h2 className="text-3xl font-semibold mt-4">{t("socialPage.portfolioTitle")}</h2>
                         <p className="text-slate-600 mt-4 leading-relaxed">
-                            Iată doar un exemplu din conținutul video pe care îl creăm pentru clienții noștri. De la scenarii și filmare, până la editare și publicare — fiecare video este gândit strategic pentru a genera vizualizări, engagement și conversii.
+                            {t("socialPage.portfolioDesc")}
                         </p>
                         
                         <div className="flex flex-wrap gap-3 mt-6">
@@ -154,15 +150,15 @@ export default function SocialMediaPageClient() {
             {/* Description Section */}
             <div className="max-w-3xl mx-auto px-6 py-20 text-center">
                 <p className="text-lg text-slate-600 leading-relaxed">
-                    Social media nu e doar despre postări — e despre povești care conectează. Echipa noastră vine direct la locația ta, echipată complet, cu actori și scenarii personalizate, pentru a crea conținut video autentic care îți diferențiază brandul în feed-ul aglomerat al competiției.
+                    {t("socialPage.descriptionText")}
                 </p>
             </div>
 
             {/* Features Grid */}
             <div className="px-6 md:px-16 lg:px-24 xl:px-32 pb-20">
-                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max mx-auto">CE OFERIM</p>
-                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">Tot ce ai nevoie pentru social media</h2>
-                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">De la filmare și editare la strategie și management — acoperim fiecare aspect.</p>
+                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max mx-auto">{t("socialPage.whatWeOffer")}</p>
+                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">{t("socialPage.whatWeOfferTitle")}</h2>
+                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">{t("socialPage.whatWeOfferDesc")}</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
                     {features.map((feature, index) => (
@@ -183,9 +179,9 @@ export default function SocialMediaPageClient() {
 
             {/* Process Section */}
             <div className="px-6 md:px-16 lg:px-24 xl:px-32 py-20 bg-slate-50">
-                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-white border border-slate-300 w-max mx-auto">PROCESUL NOSTRU</p>
-                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">De la idee la viral</h2>
-                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">Un proces simplu și transparent care îți aduce conținut de calitate.</p>
+                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-white border border-slate-300 w-max mx-auto">{t("socialPage.processLabel")}</p>
+                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">{t("socialPage.processTitle")}</h2>
+                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">{t("socialPage.processDesc")}</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 max-w-6xl mx-auto">
                     {processSteps.map((item, index) => (
@@ -206,16 +202,16 @@ export default function SocialMediaPageClient() {
 
             {/* Final CTA */}
             <div className="flex flex-col items-center text-center justify-center py-20 px-6">
-                <h2 className="text-3xl font-semibold mb-4">Gata să ieși în evidență pe social media?</h2>
+                <h2 className="text-3xl font-semibold mb-4">{t("socialPage.ctaTitle")}</h2>
                 <p className="text-slate-600 max-w-xl mx-auto">
-                    Programează o întâlnire și hai să discutăm cum putem transforma prezența ta online.
+                    {t("socialPage.ctaDesc")}
                 </p>
                 <div className="flex items-center gap-4 mt-8">
                     <Link href="/contact" className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11 flex items-center">
-                        Programează o consultare gratuită
+                        {t("socialPage.ctaCta1")}
                     </Link>
                     <Link href="/#servicii" className="border border-black transition text-slate-600 rounded-md px-6 h-11 flex items-center">
-                        Vezi toate serviciile
+                        {t("socialPage.ctaCta2")}
                     </Link>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 "use client";
-import { navLinks } from "@/data/navLinks";
+import { useLanguage } from "@/context/LanguageContext";
 import { MenuIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +11,14 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const router = useRouter();
     const pathname = usePathname();
+    const { language, toggleLanguage, t } = useLanguage();
+
+    const navLinks = [
+        { name: t("nav.home"), href: "/" },
+        { name: t("nav.services"), href: "/#servicii" },
+        { name: t("nav.packages"), href: "/#pachete" },
+        { name: t("nav.contact"), href: "/contact" },
+    ];
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -76,20 +84,32 @@ export default function Navbar() {
                         </a>
                     ))}
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
+                    {/* Language Toggle */}
+                    <button
+                        onClick={toggleLanguage}
+                        className="relative group flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-slate-300 bg-white/80 backdrop-blur-sm hover:bg-slate-50 transition-all duration-300 cursor-pointer"
+                        aria-label={language === "ro" ? "Switch to English" : "Comută la Română"}
+                    >
+                        <span className={`text-xs font-semibold transition-colors duration-300 ${language === "ro" ? "text-slate-900" : "text-slate-400"}`}>RO</span>
+                        <div className="relative w-8 h-[18px] rounded-full bg-slate-200 transition-colors duration-300">
+                            <div className={`absolute top-[2px] w-[14px] h-[14px] rounded-full bg-slate-900 shadow-sm transition-all duration-300 ease-in-out ${language === "en" ? "left-[15px]" : "left-[2px]"}`} />
+                        </div>
+                        <span className={`text-xs font-semibold transition-colors duration-300 ${language === "en" ? "text-slate-900" : "text-slate-400"}`}>EN</span>
+                    </button>
                     <a 
                         href="/contact" 
                         onClick={(e) => handleNavClick(e, '/contact')}
                         className="hidden md:block hover:bg-slate-100 transition px-4 py-2 border border-black rounded-md cursor-pointer"
                     >
-                        Contact
+                        {t("nav.contact")}
                     </a>
                     <a 
                         href="/contact" 
                         onClick={(e) => handleNavClick(e, '/contact')}
                         className="hidden md:block px-4 py-2 bg-black hover:bg-gray-800 transition text-white rounded-md cursor-pointer"
                     >
-                        Solicită un audit gratuit
+                        {t("nav.requestAudit")}
                     </a>
                     <button 
                         onClick={() => setOpenMobileMenu(!openMobileMenu)} 
@@ -133,15 +153,27 @@ export default function Navbar() {
                         onClick={(e) => handleNavClick(e, '/contact')} 
                         className="text-xl font-medium hover:text-slate-600 transition cursor-pointer active:scale-95 py-2"
                     >
-                        Contact
+                        {t("nav.contact")}
                     </a>
                     <a 
                         href="/contact" 
                         onClick={(e) => handleNavClick(e, '/contact')} 
                         className="px-6 py-3 bg-black hover:bg-gray-800 transition text-white rounded-md cursor-pointer active:scale-95 mt-4"
                     >
-                        Solicită un audit gratuit
+                        {t("nav.requestAudit")}
                     </a>
+                    {/* Mobile Language Toggle */}
+                    <button
+                        onClick={toggleLanguage}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white/80 mt-2 transition-all duration-300"
+                        aria-label={language === "ro" ? "Switch to English" : "Comută la Română"}
+                    >
+                        <span className={`text-sm font-semibold transition-colors duration-300 ${language === "ro" ? "text-slate-900" : "text-slate-400"}`}>RO</span>
+                        <div className="relative w-9 h-5 rounded-full bg-slate-200">
+                            <div className={`absolute top-[3px] w-[14px] h-[14px] rounded-full bg-slate-900 shadow-sm transition-all duration-300 ease-in-out ${language === "en" ? "left-[17px]" : "left-[3px]"}`} />
+                        </div>
+                        <span className={`text-sm font-semibold transition-colors duration-300 ${language === "en" ? "text-slate-900" : "text-slate-400"}`}>EN</span>
+                    </button>
                 </div>
             </div>
         </>

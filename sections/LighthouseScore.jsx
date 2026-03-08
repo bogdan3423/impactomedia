@@ -1,12 +1,16 @@
+"use client";
+import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
 
 export default function LighthouseScore() {
+    const { t } = useLanguage();
+
     return (
         <div className="mt-28 px-6 md:px-16 lg:px-24 xl:px-32">
             <div className="max-w-3xl mx-auto text-center">
                 <h3 className="text-3xl md:text-4xl font-semibold">
-                    Așa lucrăm la {" "}
-                    <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">Impactomedia</span>
+                    {t("lighthouse.title1")}{" "}
+                    <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">{t("lighthouse.title2")}</span>
                 </h3>
                 <p className="text-slate-600 mt-3 max-w-lg mx-auto">
                     

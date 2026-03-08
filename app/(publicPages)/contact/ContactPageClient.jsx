@@ -1,8 +1,10 @@
 "use client"
+import { useLanguage } from "@/context/LanguageContext";
 import { MailIcon, PhoneIcon, MapPinIcon, CheckCircleIcon, AlertCircleIcon, LoaderIcon } from "lucide-react";
 import { useState } from "react";
 
 export default function ContactPageClient() {
+    const { t } = useLanguage();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -41,7 +43,7 @@ export default function ContactPageClient() {
                 setStatus({ type: 'error', message: data.error });
             }
         } catch (error) {
-            setStatus({ type: 'error', message: 'A apărut o eroare. Vă rugăm încercați din nou.' });
+            setStatus({ type: 'error', message: t("contact.errorGeneric") });
         } finally {
             setIsLoading(false);
         }
@@ -52,32 +54,32 @@ export default function ContactPageClient() {
             {/* Hero Section */}
             <div className="flex flex-col items-center justify-center text-center px-4 pb-32 bg-[url('/assets/light-hero-gradient.svg')] bg-no-repeat bg-cover">
                 <h1 className="mt-46 text-6xl/16 md:text-[80px]/22 font-semibold max-w-4xl">
-                    Hai să{" "}
-                    <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">discutăm!</span>
+                    {t("contact.heroTitle1")}{" "}
+                    <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">{t("contact.heroTitle2")}</span>
                 </h1>
                 <p className="text-lg max-w-xl mt-4">
-                    Suntem aici să te ajutăm să crești online. Contactează-ne și hai să vedem cum putem colabora.
+                    {t("contact.heroDescription")}
                 </p>
                 <div className="flex items-center gap-4 mt-8">
                     <a href="tel:+40748030566" className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11 flex items-center">
-                        Sună-ne acum
+                        {t("contact.callNow")}
                     </a>
                     <a href="mailto:hello@impactomedia.ro" className="flex items-center gap-2 border border-black transition text-slate-600 rounded-md px-6 h-11">
                         <MailIcon strokeWidth={1} size={20} />
-                        <span>Trimite email</span>
+                        <span>{t("contact.sendEmail")}</span>
                     </a>
                 </div>
             </div>
 
             {/* Contact Info Section */}
             <div className="max-w-4xl mx-auto px-6 pt-16">
-                <h2 className="text-3xl font-semibold text-slate-900 mb-8 text-center">Informații de contact</h2>
+                <h2 className="text-3xl font-semibold text-slate-900 mb-8 text-center">{t("contact.contactInfo")}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-slate-50 border border-slate-200">
                         <div className="w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center mb-4">
                             <PhoneIcon className="text-white size-6" strokeWidth={1.5} />
                         </div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Telefon</h3>
+                        <h3 className="text-lg font-semibold text-slate-900 mb-2">{t("contact.phone")}</h3>
                         <a href="tel:+40748030566" className="text-slate-600 hover:text-slate-900 transition">
                             +40 748 030 566
                         </a>
@@ -86,7 +88,7 @@ export default function ContactPageClient() {
                         <div className="w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center mb-4">
                             <MailIcon className="text-white size-6" strokeWidth={1.5} />
                         </div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Email</h3>
+                        <h3 className="text-lg font-semibold text-slate-900 mb-2">{t("contact.email")}</h3>
                         <a href="mailto:hello@impactomedia.ro" className="text-slate-600 hover:text-slate-900 transition">
                             hello@impactomedia.ro
                         </a>
@@ -95,9 +97,9 @@ export default function ContactPageClient() {
                         <div className="w-14 h-14 rounded-xl bg-slate-900 flex items-center justify-center mb-4">
                             <MapPinIcon className="text-white size-6" strokeWidth={1.5} />
                         </div>
-                        <h3 className="text-lg font-semibold text-slate-900 mb-2">Locație</h3>
+                        <h3 className="text-lg font-semibold text-slate-900 mb-2">{t("contact.locationTitle")}</h3>
                         <p className="text-slate-600">
-                            Cluj-Napoca, România
+                            {t("contact.locationValue")}
                         </p>
                     </div>
                 </div>
@@ -105,7 +107,7 @@ export default function ContactPageClient() {
 
             {/* Contact Form Section */}
             <div className="max-w-2xl mx-auto px-6 mt-20">
-                <h2 className="text-3xl font-semibold text-slate-900 mb-8 text-center">Trimite-ne un mesaj</h2>
+                <h2 className="text-3xl font-semibold text-slate-900 mb-8 text-center">{t("contact.sendMessage")}</h2>
                 
                 {/* Status Messages */}
                 {status.message && (
@@ -127,7 +129,7 @@ export default function ContactPageClient() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
-                                Nume complet *
+                                {t("contact.fullName")}
                             </label>
                             <input
                                 type="text"
@@ -137,12 +139,12 @@ export default function ContactPageClient() {
                                 onChange={handleChange}
                                 required
                                 className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition"
-                                placeholder="Ion Popescu"
+                                placeholder={t("contact.namePlaceholder")}
                             />
                         </div>
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
-                                Email *
+                                {t("contact.emailLabel")}
                             </label>
                             <input
                                 type="email"
@@ -152,13 +154,13 @@ export default function ContactPageClient() {
                                 onChange={handleChange}
                                 required
                                 className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition"
-                                placeholder="ion@exemplu.ro"
+                                placeholder={t("contact.emailPlaceholder")}
                             />
                         </div>
                     </div>
                     <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
-                            Telefon
+                            {t("contact.phoneLabel")}
                         </label>
                         <input
                             type="tel"
@@ -172,7 +174,7 @@ export default function ContactPageClient() {
                     </div>
                     <div>
                         <label htmlFor="service" className="block text-sm font-medium text-slate-700 mb-2">
-                            Ce serviciu te interesează?
+                            {t("contact.serviceInterest")}
                         </label>
                         <select
                             id="service"
@@ -181,16 +183,16 @@ export default function ContactPageClient() {
                             onChange={handleChange}
                             className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition"
                         >
-                            <option value="">Selectează un serviciu</option>
-                            <option value="website">Website-uri & Magazine Online</option>
-                            <option value="social-media">Social Media Marketing & Content Creation</option>
-                            <option value="ads">Reclame Plătite (Google & Meta Ads)</option>
-                            <option value="all">Toate serviciile</option>
+                            <option value="">{t("contact.selectService")}</option>
+                            <option value="website">{t("contact.serviceWebsite")}</option>
+                            <option value="social-media">{t("contact.serviceSocial")}</option>
+                            <option value="ads">{t("contact.serviceAds")}</option>
+                            <option value="all">{t("contact.serviceAll")}</option>
                         </select>
                     </div>
                     <div>
                         <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
-                            Mesaj *
+                            {t("contact.messageLabel")}
                         </label>
                         <textarea
                             id="message"
@@ -200,7 +202,7 @@ export default function ContactPageClient() {
                             onChange={handleChange}
                             required
                             className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition resize-none"
-                            placeholder="Spune-ne mai multe despre proiectul tău..."
+                            placeholder={t("contact.messagePlaceholder")}
                         />
                     </div>
                     <button
@@ -211,10 +213,10 @@ export default function ContactPageClient() {
                         {isLoading ? (
                             <>
                                 <LoaderIcon className="size-5 animate-spin" />
-                                Se trimite...
+                                {t("contact.sending")}
                             </>
                         ) : (
-                            'Trimite mesajul'
+                            t("contact.sendButton")
                         )}
                     </button>
                 </form>
@@ -222,13 +224,13 @@ export default function ContactPageClient() {
 
             {/* Final CTA Section */}
             <div className="flex flex-col items-center text-center justify-center mt-32 mb-20 px-6">
-                <h2 className="text-3xl font-semibold mb-4">Preferi să vorbim direct?</h2>
+                <h2 className="text-3xl font-semibold mb-4">{t("contact.preferDirect")}</h2>
                 <p className="text-slate-600 max-w-xl mx-auto">
-                    Programează un apel gratuit de 15 minute și hai să discutăm despre cum putem crește afacerea ta.
+                    {t("contact.preferDirectDesc")}
                 </p>
                 <div className="flex items-center gap-4 mt-8">
                     <a href="tel:+40748030566" className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11 flex items-center">
-                        Programează un apel
+                        {t("contact.scheduleCall")}
                     </a>
                 </div>
             </div>

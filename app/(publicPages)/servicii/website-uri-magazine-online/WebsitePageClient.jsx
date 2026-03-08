@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import LighthouseScore from "@/sections/LighthouseScore";
+import { useLanguage } from "@/context/LanguageContext";
 
 const portfolioItems = [
     {
@@ -107,44 +108,38 @@ const processSteps = [
     { step: "04", title: "Lansare & Optimizare", description: "Lansăm site-ul live și monitorizăm performanța pentru optimizări continue." },
 ];
 
-const features = [
-    { icon: PaletteIcon, title: "Design Modern", description: "Interfețe elegante și intuitive care reflectă identitatea brandului tău." },
-    { icon: SearchIcon, title: "Optimizare SEO", description: "Site-ul tău va fi vizibil în Google din prima zi, cu structură SEO-friendly." },
-    { icon: RocketIcon, title: "Performanță Maximă", description: "Viteze de încărcare sub 2 secunde pentru o experiență excelentă." },
-    { icon: ShoppingCartIcon, title: "E-commerce Complet", description: "Magazine online cu plăți integrate, gestiune stocuri și livrare automată." },
-    { icon: ShieldCheckIcon, title: "Securitate Avansată", description: "SSL, backup-uri automate și protecție împotriva atacurilor cibernetice." },
-    { icon: GlobeIcon, title: "100% Responsive", description: "Arată perfect pe orice dispozitiv — telefon, tabletă sau desktop." },
-];
-
-const faqs = [
-    { question: "Cât durează să fie gata un website?", answer: "Un site de prezentare durează 2-4 săptămâni, iar un magazin online 4-8 săptămâni, în funcție de complexitate și funcționalități." },
-    { question: "Pot să îmi actualizez singur conținutul?", answer: "Da! Toate site-urile noastre vin cu un panou de administrare intuitiv, unde poți modifica texte, imagini și produse fără cunoștințe tehnice." },
-    { question: "Site-ul va fi optimizat pentru mobil?", answer: "Absolut. Toate website-urile sunt responsive și arată perfect pe telefon, tabletă și desktop." },
-    { question: "Oferiți și hosting?", answer: "Da, oferim pachete complete care includ hosting rapid, certificat SSL și backup-uri automate." },
-    { question: "Ce se întâmplă după lansare?", answer: "Oferim suport tehnic continuu și pachete de întreținere pentru a menține site-ul actualizat și securizat." },
-];
+const featureIcons = [PaletteIcon, SearchIcon, RocketIcon, ShoppingCartIcon, ShieldCheckIcon, GlobeIcon];
 
 export default function WebsitePageClient() {
+    const { t } = useLanguage();
     const [openFaq, setOpenFaq] = useState(null);
+
+    const features = t("websitePage.features").map((feature, index) => ({
+        icon: featureIcons[index],
+        title: feature.title,
+        description: feature.description,
+    }));
+
+    const faqs = t("websitePage.faqs");
 
     return (
         <>
             {/* Hero Section */}
             <div className="flex flex-col items-center justify-center text-center px-4 pb-20 bg-[url('/assets/light-hero-gradient.svg')] bg-no-repeat bg-cover">
                 <h1 className="mt-46 text-6xl/16 md:text-[80px]/22 font-semibold max-w-4xl">
-                    Website-uri & Magazine{" "}
-                    <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">Online</span>
+                    {t("websitePage.heroTitle1")}{" "}
+                    <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">{t("websitePage.heroTitle2")}</span>
                 </h1>
                 <p className="text-lg max-w-xl mt-4">
-                    Creăm website-uri profesionale și magazine online care transformă vizitatorii în clienți fideli. Design modern, performanță optimă, rezultate măsurabile.
+                    {t("websitePage.heroDescription")}
                 </p>
                 <div className="flex items-center gap-4 mt-8">
                     <Link href="/contact" className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11 flex items-center">
-                        Solicită o ofertă
+                        {t("websitePage.requestOffer")}
                     </Link>
                     <Link href="#portofoliu" className="flex items-center gap-2 border border-black transition text-slate-600 rounded-md px-6 h-11">
                         <VideoIcon strokeWidth={1} />
-                        <span>Vezi exemple</span>
+                        <span>{t("websitePage.seeExamples")}</span>
                     </Link>
                 </div>
             </div>
@@ -152,15 +147,15 @@ export default function WebsitePageClient() {
             {/* Description Section */}
             <div className="max-w-3xl mx-auto px-6 py-20 text-center">
                 <p className="text-lg text-slate-600 leading-relaxed">
-                    În era digitală, website-ul tău este cartea de vizită a afacerii. Creăm site-uri de prezentare și magazine online, optimizate SEO, care nu doar arată bine, ci și convertesc. Fiecare proiect este construit cu focus pe experiența utilizatorului și performanță.
+                    {t("websitePage.descriptionText")}
                 </p>
             </div>
 
             {/* Features Grid */}
             <div className="px-6 md:px-16 lg:px-24 xl:px-32 pb-20">
-                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max mx-auto">CE OFERIM</p>
-                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">Tot ce ai nevoie pentru un website de succes</h2>
-                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">De la design și dezvoltare la SEO și securitate — acoperim fiecare aspect.</p>
+                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max mx-auto">{t("websitePage.whatWeOffer")}</p>
+                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">{t("websitePage.whatWeOfferTitle")}</h2>
+                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">{t("websitePage.whatWeOfferDesc")}</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
                     {features.map((feature, index) => (
@@ -184,9 +179,9 @@ export default function WebsitePageClient() {
 
             {/* Portfolio Section */}
             <div id="portofoliu" className="px-6 md:px-16 lg:px-24 xl:px-32 py-20">
-                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max mx-auto">PORTOFOLIU</p>
-                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">Proiecte care vorbesc de la sine</h2>
-                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">Iată câteva dintre proiectele pe care le-am realizat pentru clienții noștri.</p>
+                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-slate-50 border border-slate-300 w-max mx-auto">{t("websitePage.portfolioLabel")}</p>
+                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">{t("websitePage.portfolioTitle")}</h2>
+                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">{t("websitePage.portfolioDesc")}</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-5xl mx-auto">
                     {portfolioItems.map((item, index) => (
@@ -221,7 +216,7 @@ export default function WebsitePageClient() {
                     ))}
                 </div>
 
-                <p className="text-center text-slate-500 mt-12 text-lg">...și multe alte website-uri create pentru clienți din diverse industrii.</p>
+                <p className="text-center text-slate-500 mt-12 text-lg">{t("websitePage.moreWebsites")}</p>
             </div>
 
             <LighthouseScore />
@@ -231,9 +226,9 @@ export default function WebsitePageClient() {
 
             {/* FAQ Section */}
             <div className="px-6 md:px-16 lg:px-24 xl:px-32 py-20 bg-slate-50">
-                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-white border border-slate-300 w-max mx-auto">FAQ</p>
-                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">Întrebări frecvente</h2>
-                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">Răspunsuri la cele mai comune întrebări despre serviciile noastre.</p>
+                <p className="text-center font-medium text-indigo-600 px-10 py-2 rounded-full bg-white border border-slate-300 w-max mx-auto">{t("websitePage.faqLabel")}</p>
+                <h2 className="text-3xl font-semibold text-center mx-auto mt-4">{t("websitePage.faqTitle")}</h2>
+                <p className="text-slate-600 text-center mt-2 max-w-lg mx-auto">{t("websitePage.faqDesc")}</p>
 
                 <div className="max-w-3xl mx-auto mt-12 space-y-4">
                     {faqs.map((faq, index) => (
@@ -258,16 +253,16 @@ export default function WebsitePageClient() {
 
             {/* Final CTA */}
             <div className="flex flex-col items-center text-center justify-center py-20 px-6">
-                <h2 className="text-3xl font-semibold mb-4">Gata să-ți construim prezența online?</h2>
+                <h2 className="text-3xl font-semibold mb-4">{t("websitePage.ctaTitle")}</h2>
                 <p className="text-slate-600 max-w-xl mx-auto">
-                    Hai să discutăm despre proiectul tău și să găsim cea mai bună soluție pentru afacerea ta.
+                    {t("websitePage.ctaDesc")}
                 </p>
                 <div className="flex items-center gap-4 mt-8">
                     <Link href="/contact" className="bg-black hover:bg-gray-800 transition text-white rounded-md px-6 h-11 flex items-center">
-                        Programează o consultare gratuită
+                        {t("websitePage.ctaCta1")}
                     </Link>
                     <Link href="/#servicii" className="border border-black transition text-slate-600 rounded-md px-6 h-11 flex items-center">
-                        Vezi toate serviciile
+                        {t("websitePage.ctaCta2")}
                     </Link>
                 </div>
             </div>

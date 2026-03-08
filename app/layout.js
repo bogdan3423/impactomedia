@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeContextProvider } from "@/context/ThemeContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import LenisScroll from "@/components/Lenis";
 
 const poppins = Poppins({
@@ -115,8 +116,10 @@ export default function RootLayout({ children }) {
             </head>
             <body>
                 <ThemeContextProvider>
-                    <LenisScroll />
-                    {children}
+                    <LanguageProvider>
+                        <LenisScroll />
+                        {children}
+                    </LanguageProvider>
                 </ThemeContextProvider>
             </body>
         </html>

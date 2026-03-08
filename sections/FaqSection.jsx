@@ -1,18 +1,21 @@
 "use client";
 import SectionTitle from "@/components/SectionTitle";
-import { faqsData } from "@/data/faqsData";
+import { useLanguage } from "@/context/LanguageContext";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
 export const FaqSection = () => {
     const [openIndex, setOpenIndex] = useState(null);
+    const { t } = useLanguage();
+    const faqItems = t("faq.items");
+
     return (
         <div className="relative max-w-2xl mx-auto flex flex-col items-center justify-center px-4 md:px-0">
             <Image className="absolute -mb-120 -left-40 -z-10 pointer-events-none" src="/assets/color-splash-light.svg" alt="" width={1000} height={1000} loading="lazy" />
-            <SectionTitle text1="ÎNTREBĂRI" text2="Întrebări frecvente" text3="Răspunsuri la cele mai comune întrebări despre serviciile noastre și cum putem colabora." />
+            <SectionTitle text1={t("faq.label")} text2={t("faq.title")} text3={t("faq.description")} />
             <div className="mt-8">
-                {faqsData.map((faq, index) => (
+                {Array.isArray(faqItems) && faqItems.map((faq, index) => (
                     <div className="border-b border-slate-300 py-4 cursor-pointer w-full" key={index} onClick={() => setOpenIndex(openIndex === index ? null : index)}>
                         <div className="flex items-center justify-between">
                             <h4 className="text-base font-medium">
