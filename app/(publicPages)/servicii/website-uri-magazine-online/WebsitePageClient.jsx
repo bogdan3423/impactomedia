@@ -98,6 +98,13 @@ const portfolioItems = [
         description: "Website de prezentare pentru compania austriacă specializată în soluții complete pentru acoperișuri, inclusiv montaj de noi sisteme de acoperire, reparații, întreținere, integrare solară și consultanță tehnică pentru proiecte rezidențiale, comerciale și industriale.",
         tags: ["Acoperișuri", "Montaj & Reparații", "Întreținere", "Sisteme Solare", "Consultanță Tehnică"],
         image: "/assets/dachkonzept_website_de_prezentare.png",
+    },
+    {
+        title: "Key Auto Iași",
+        category: "Servicii Auto & Deblocare",
+        description: "Website de prezentare pentru servicii auto non-stop în Iași, specializat în refacere chei auto pierdute, chei cu cip transponder și telecomandă, deblocare auto și intervenții rapide la domiciliu sau pe stradă.",
+        tags: ["Chei Auto", "Transponder", "Deblocare Auto", "Non-Stop", "Iași"],
+        image: "/assets/website_de_prezentare_keyautoiasi.png",
     }
 ];
 
