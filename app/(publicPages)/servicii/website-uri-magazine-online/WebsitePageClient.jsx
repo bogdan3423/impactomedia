@@ -8,32 +8,40 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const portfolioItems = [
     {
+        title: "Key Auto Iași",
+        category: "Servicii Auto & Deblocare",
+        description: "Website de prezentare pentru servicii auto non-stop în Iași, specializat în refacere chei auto pierdute, chei cu cip transponder și telecomandă, deblocare auto și intervenții rapide la domiciliu sau pe stradă.",
+        tags: ["Chei Auto", "Transponder", "Deblocare Auto", "Non-Stop", "Iași"],
+        image: "/assets/keyautoiasi_website_de_prezentare.webp",
+    },
+    
+    {
         title: "MVP Design",
         category: "Papetărie, Design & Branding",
         description: "Website de prezentare pentru papetărie modernă ce oferă servicii de print, design grafic și branding, adresate atât persoanelor fizice, cât și companiilor.",
         tags: ["Papetărie", "Print Digital", "Design Grafic", "Branding", "Personalizare"],
-        image: "/assets/mvpdesign_website_de_prezentare.png",
+        image: "/assets/mvpdesign_website_de_prezentare (1).webp",
     },
     {
         title: "WebSite Renovări",
         category: "Servicii Renovări & Amenajări",
         description: "Website de prezentare pentru firmă de renovări interioare și exterioare, cu portofoliu de lucrări, listă de servicii și formulare de contact pentru cereri de ofertă.",
         tags: ["Renovări Interioare", "Amenajări", "Construcții", "Portofoliu", "Cerere Ofertă"],
-        image: "/assets/renomax_website_de_prezentare.png",
+        image: "/assets/renomax_website_de_prezentare.webp",
     },
     {
         title: "ABT Translogic",
         category: "Transport & Logistică",
         description: "Website de prezentare pentru companie de transport și logistică, cu servicii de transport intern și internațional, consultanță logistică și formulare rapide de solicitare ofertă.",
         tags: ["Transport Marfă", "Logistică", "Transport Internațional", "Flotă Auto", "Cerere Ofertă"],
-        image: "/assets/abtranslogic.png",
+        image: "/assets/abtranslogic.webp",
 },
     {
         title: "Arca Seniorilor",
         category: "Centru Rezidențial Seniori",
         description: "Website de prezentare pentru centru rezidențial destinat vârstnicilor, cu informații despre cazare, îngrijire medicală, activități recreative și facilități moderne.",
         tags: ["Cămin Bătrâni", "Îngrijire Seniori", "Asistență Medicală", "Cazare", "Activități"],
-        image: "/assets/arca_seniorilor_website_de_prezentare.png",
+        image: "/assets/arca_seniorilor_website_de_prezentare.webp",
     },
 
     {
@@ -41,71 +49,66 @@ const portfolioItems = [
         category: "Construcții Acoperișuri & Dulgherie",
         description: "Website de prezentare pentru companie specializată în construcția și renovarea acoperișurilor, dulgherie și lucrări structurale din lemn, cu portofoliu de proiecte și solicitare rapidă de ofertă.",
         tags: ["Acoperișuri", "Dulgherie", "Construcții Lemn", "Renovări", "Ofertă Rapidă"],
-        image: "/assets/dachkonstrukt_website_de_prezentare.png",
+        image: "/assets/dachkonstrukt_website_de_prezentare.webp",
     },
     {
         title: "UsiBlocate Cluj",
         category: "Servicii Profesionale de Lăcătușerie",
         description: "Website de prezentare pentru servicii de lăcătușerie non-stop în Cluj-Napoca, oferind deblocări uși, schimbare încuietori, deschidere auto, montaj uși și reparații mecanisme de închidere pentru locuințe, birouri și autovehicule.",
         tags: ["Deblocare Uși", "Lăcătușerie 24/7", "Schimbare Încuietori", "Deschidere Auto", "Montaj Uși"],
-        image: "/assets/usiblocatecluj_website_de_prezentare.png",
+        image: "/assets/usiblocatecluj_website_de_prezentare.webp",
     },
     {
         title: "Certum Consult",
         category: "Agenție de Detectivi Particulari",
         description: "Website de prezentare pentru agenție de investigații private din Cluj-Napoca, oferind servicii discrete de filaj, verificări de integritate, investigatii corporate și consultanță confidențială pentru clienți privați și companii.",
         tags: ["Detectivi Particulari", "Investigații Private", "Verificări Integritate", "Consultanță Confidențială", "Filaj"], 
-        image: "/assets/certum_website_de_prezentare.png",
+        image: "/assets/certum_website_de_prezentare.webp",
     },
     {
         title: "Luxura Invest",
         category: "Consultanță Imobiliară & Investiții",
         description: "Website de prezentare pentru firmă de consultanță imobiliară și investiții, oferind servicii de intermediere proprietăți, evaluări de piață și strategii de investiții adaptate clienților rezidențiali și corporate.",
         tags: ["Imobiliare", "Consultanță Investiții", "Intermediere Proprietăți", "Evaluări Piață", "Strategie Financiară"],
-        image: "/assets/luxurainvest_website_de_prezentare.png",
+        image: "/assets/luxurainvest_website_de_prezentare.webp",
     },
     {
         title: "Regii Media",
         category: "Agenție Marketing & Content",
         description: "Website de prezentare pentru agenție de marketing digital, specializată în strategii de promovare, creare de conținut, management social media și campanii publicitare eficientizate pentru afaceri.",
         tags: ["Marketing Digital", "Content Creation", "Social Media", "SEO", "Brand Awareness"],
-        image: "/assets/regiimedia_website_de_prezentare.png",
+        image: "/assets/regiimedia_website_de_prezentare.webp",
     },
     {
         title: "Festival de Teatru Dramaland",
         category: "Festival Cultural & Teatral",
         description: "Website oficial al Festivalului de Teatru Dramaland, un eveniment artistic dedicat spectacolelor de teatru, performance-urilor și activităților culturale pentru toate vârstele, cu program, invitați și bilete online.",
         tags: ["Festival Teatru", "Artă & Cultură", "Spectacole Live", "Program Eveniment", "Bilete Online"],
-        image: "/assets/dramaland_website_de_prezentare.png",
+        image: "/assets/dramaland_website_de_prezentare.webp",
     },
     {
         title: "Parchet Lux",
         category: "Parchet & Pardoseli",
         description: "Website de prezentare pentru magazin de parchet și soluții de pardoseli, oferind o gamă variată de produse de calitate pentru locuințe și spații comerciale, cu detalii despre categorii, oferte și modalități de contact.",
         tags: ["Parchet", "Pardoseli", "Design Interior", "Finisaje", "Consultanță Vânzări"],
-        image: "/assets/parchetlux_website_de_prezentare.png",
+        image: "/assets/parchetlux_website_de_prezentare.webp",
     },
     {
         title: "deblocariusicluj.ro",
         category: "Servicii Lăcătușerie & Deblocare",
         description: "Website de prezentare pentru servicii profesionale de lăcătușerie și deblocare uși, oferind intervenții rapide non-stop pentru locuințe, birouri și autovehicule, schimbare încuietori, montaj uși și soluții de securitate.",
         tags: ["Deblocare Uși", "Lăcătușerie 24/7", "Schimbare Încuietori", "Montaj Uși", "Securitate"], 
-        image: "/assets/deblocariusicluj_website_de_prezentare.png",
+        image: "/assets/deblocariusicluj_website_de_prezentare.webp",
     },
     {
         title: "DachKonzept",
         category: "Construcții Acoperișuri & Soluții Tehnice",
         description: "Website de prezentare pentru compania austriacă specializată în soluții complete pentru acoperișuri, inclusiv montaj de noi sisteme de acoperire, reparații, întreținere, integrare solară și consultanță tehnică pentru proiecte rezidențiale, comerciale și industriale.",
         tags: ["Acoperișuri", "Montaj & Reparații", "Întreținere", "Sisteme Solare", "Consultanță Tehnică"],
-        image: "/assets/dachkonzept_website_de_prezentare.png",
+        image: "/assets/dachkonzept_website_de_prezentare.webp",
     },
-    {
-        title: "Key Auto Iași",
-        category: "Servicii Auto & Deblocare",
-        description: "Website de prezentare pentru servicii auto non-stop în Iași, specializat în refacere chei auto pierdute, chei cu cip transponder și telecomandă, deblocare auto și intervenții rapide la domiciliu sau pe stradă.",
-        tags: ["Chei Auto", "Transponder", "Deblocare Auto", "Non-Stop", "Iași"],
-        image: "/assets/website_de_prezentare_keyautoiasi.png",
-    }
+    
+    
 ];
 
 const processSteps = [
